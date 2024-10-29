@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/global.css">
     <title>CSS Styler</title>
 </head>
 <body>
-    <section></section>
+    <section class="button-content">
+        <article class="config">
+            <div class="text">
+                <label for="text">Texto</label>
+                <input type="text" name="text" id="text">
+            </div>
+            <div class="width">
+                <label for="width">Width</label>
+                <input type="range" name="width" id="width">
+            </div>
+            <div class="height">
+                <label for="height">Height</label>
+                <input type="range" name="height" id="height">
+            </div>
+            <div class="font-family">
+                <label for="fontFamily">Font Family</label>
+                <select name="fontFamily" id="fontFamily">
+                    <option value="Arial">Arial</option>
+                    <option value="Monospaced">Monospaced</option>
+                </select>
+            </div>
+            <div class="border-radius">
+                <label for="borderRadius">Border Radius</label>
+                <input type="range" name="borderRadius" id="borderRadius">
+            </div>
+            <div class="background-color">
+                <label for="backgroundColor">Background</label>
+                <input type="color" name="backgroundColor" id="backgroundColor">
+            </div>
+            <div class="color">
+                <label for="color">Color</label>
+                <input type="color" name="color" id="color">
+            </div>
+        </article>
+        <article class="button">
+            <button id="model-button">Resultado aqui!</button>
+        </article>
+    </section>
 </body>
 </html>
