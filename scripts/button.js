@@ -1,62 +1,51 @@
 const config = document.forms.buttonConfig;
 const button = document.querySelector('#model-button');
 
-function changeText(value) {
-    if (value) {
-        button.innerText = value;
-    } else {
-        this.button.innerText = 'Resultado aqui!'
+fetch('./scripts/data/font-size.json').then((response) => response.json())
+    .then((data) => {
+        data.forEach((font) => {
+            const option = document.createElement('option');
+            option.innerText = font;
+            config.fontFamily.appendChild(option);
+        })
     }
+);
+
+function updateButtonSize() {
+    config.width.value = button.clientWidth;
+    config.height.value = button.clientHeight;
 }
 
-function changeColor(value) {
-    button.style.color = value;
-}
+config.text.addEventListener('keyup', ({target: {value}}) => {
+    button.innerText = value || 'Resultado aqui!'
+});
 
-function changeWidth(value) {
+config.width.addEventListener('input', ({target: {value}}) => {
     button.style.width = value + 'px';
-}
+});
 
-function changeHeight(value) {
+config.height.addEventListener('input', ({target: {value}}) => {
     button.style.height = value + 'px';
-}
+});
 
-function changeFontFamily(value) {
-    button.style.fontFamily = value + ', sans-serif';
-}
-
-function changeBackgorundColor(value) {
-    button.style.backgroundColor = value;
-}
-
-function changeBorderRadius(value) {
+config.borderRadius.addEventListener('input', ({target: {value}}) => {
     button.style.borderRadius = value + 'px';
-}
-
-config.text.addEventListener('keyup', (event) => {
-    changeText(event.target.value);
 });
 
-config.width.addEventListener('input', (event) => {
-    changeWidth(event.target.value);
+config.backgroundColor.addEventListener('input', ({target: {value}}) => {
+    button.style.backgroundColor = value;
 });
 
-config.height.addEventListener('input', (event) => {
-    changeHeight(event.target.value);
-});
-
-config.borderRadius.addEventListener('input', (event) => {
-    changeBorderRadius(event.target.value);
-});
-
-config.backgroundColor.addEventListener('input', (event) => {
-    changeBackgorundColor(event.target.value);
-});
-
-config.color.addEventListener('input', (event) => {
-    changeColor(event.target.value)
+config.color.addEventListener('input', ({target: {value}}) => {
+    button.style.color = value;
 })
 
-config.fontFamily.addEventListener('change', (event) => {
-    changeFontFamily(event.target.value);
+config.fontSize.addEventListener('input', ({target: {value}}) => {
+    button.style.fontSize = value + 'em';
+    updateButtonSize();
+});
+
+config.fontFamily.addEventListener('change', ({target: {value}}) => {
+    button.style.fontFamily = value + ', sans-serif';
+    updateButtonSize();
 });
